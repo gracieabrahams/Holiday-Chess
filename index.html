@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chess Board - Midterm/Creative Project</title>
+
+  <!-- 
+	When linking JS files from the internet, they may be renamed or 
+	may be removed, breaking your code when least expected.
+
+	If you want your code to work as intended, it's recommended to
+	package the required libraries together with your code. You may want to learn to use Maven for managing dependencies.
+
+	For this project, you may use the internet links.
+-->
+	<link rel="stylesheet" href="cs/chessboard-1.0.0.min.css"> 
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+
+  <link rel="icon" type="image/x-icon" href="https://iconarchive.com/download/i18004/icons-land/vista-chess/King-Yellow.ico">
+
+  <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+        integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js" 
+		integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz" 
+		crossorigin="anonymous"></script>
+</head>
+
+<!-- 
+	If you have the code locally, you can load it using the following links.
+	However, you may need to enable your browser to load local files. 
+	In Safari, click on the Develop menu bar, and check Disable Local File Restrictions (https://ccm.net/apps-sites/web/1917-how-to-enable-local-file-access-on-safari/ )
+
+<script src="js/jquery-3.6.1.js"></script> 
+<script src="js/chessboard-1.0.0.min.js"></script>
+<script src="js/chess.js"></script>
+-->
+
+<!-- Must load jquery before chessboard-1.0.0.min.js
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> -->
+
+<!-- When linking JS files from the internet, they may be renamed or 
+	may be removed, breaking your code when least expected.
+
+	If you want your code to work as intended, it's recommended to
+	package the required libraries together with your code. You may want to learn to use Maven for managing dependencies.
+
+	For this project, you may use the internet links.
+-->
+<!-- <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+        integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js" 
+		integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz" 
+		crossorigin="anonymous"></script>
+-->
+
+<!--semantic tag, header for title of the game, holiday themed chess-->
+<header>
+	<h1>HOLIDAY CHESS!</h1>
+</header>
+
+<body>
+
+<!--class for christmas lights-->
+<ul class="lightrope">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+  </ul>
+
+<br><br>
+<br><br>
+
+
+
+<!--- Begin Example HTML -->
+
+<!--create buttons for replaying, next, reset-->
+<div id="randBoard"></div>
+
+<div id="chessBoard"></div>
+<button id="replayButton" style="display:none;">Replay Game</button>
+<button id="nextButton" style="display:none;">Next</button>
+<button id="resetButton" style="display:none;">Reset Game</button>
+<button id="resetScoreButton" style="display:none;">Reset Score</button>
+<br><br>
+
+
+<!--create buttons for diff styles-->
+<div class="buttons">
+<input id="name" placeholder="Enter Username Here!">
+<button id="submitName" onclick="getName()">Submit Name</button>
+<button id="style1" onclick="gameStyle1()">Basic</button>
+<button id="style2" onclick="gameStyle2()">Halloween</button>
+<button id="style3" onclick="gameStyle3()">Christmas</button>
+<button id="unicornStyle" onclick="gameUnicorn()">Unicorn Birthday</button>
+
+
+<br><br>
+
+<!--allow user to enter morale and alleg thresholds and call respective functions-->
+<input id="moraleT" placeholder="Enter morale threshold">Enter Threshold (Morale)
+<button id="submitT1" onclick="getMorale()">Submit Threshold</button>
+<br>
+<input id="allegianceT" placeholder="Enter allegiance threshold">Enter Threshold (Allegiance)
+<button id="submitT2" onclick="getT2()">Submit Threshold</button>
+
+<br><br>
+
+<!--create radio buttons for user to choose between light/dark side and random player-->
+<form>
+	<input type="radio" name="color" value="white" onclick="gameStyle1()">Light Mode
+	<input type="radio" name="color" value="black" onclick="gameStyle4()">Dark Mode
+</form>
+<input type="radio" name="rand" id="random" value="rando" onclick="playRand()">Play Random
+
+</div>
+
+<!--<div style="margin-top: 200px; float: right; margin-left: 200px;">
+	<div id="result1"></div>
+</div> -->
+
+<!--
+<div style="margin-top: 200px; float: right; margin-left: 200px;">
+	<p id="gamesPlayed"></p>
+</div>
+
+
+-->
+
+<!--output so user can see game updates, username, status, games played, wins, and ties-->
+
+<br><br>
+<div class="labels">
+	<div>
+		<div id="result1"></div>
+	</div>
+<label>Status:</label>
+<div id="status"></div>
+<label>FEN:</label>
+<div id="fen"></div>
+<label>PGN:</label>
+<div id="pgn"></div>
+<label>Games Played:</label>
+<div id="gamesPlayed"></div>
+<label>Black Wins:</label>
+<div id="blackOut"></div>
+<label>White Wins:</label>
+<div id="whiteOut"></div>
+<label>Ties:</label>
+<div id="tiesOut"></div>
+</div>
+<!--- End Example HTML -->
+
+<!-- This JS code comes after the initialization of the main html 
+	in order for the jQuery variables $status, $fen, $pgn to work -->
+<script>
+	// --- Begin Example Chess Control JS --------------------------------------------------------
+	// NOTE: this example uses the chess.js library:
+	// https://github.com/jhlywa/chess.js
+	
+	// variable that holds our board visualization
+	var board = null;
+	// variable that holds our chess.js object for making legal moves
+	var game = new Chess();
+	// variable to hold the move history
+	const history = [];
+	var historyIndexPosition = 0;
+	var startPosition = game.fen();
+
+	// jQuery variables for a few html fields
+	var $status = $("#status");
+	var $fen = $("#fen");
+	var $pgn = $("#pgn");
+	var $replayButton = $("#replayButton");
+	var $nextButton = $("#nextButton");
+	var $resetButton = $("#resetButton");
+	var $resetScoreButton = $("#resetScoreButton");
+	var $playRandomButton = $("#random");
+	var $chessboard = $("#chessBoard")
+	
+	//initialize chessboard
+	var init = function(){
+		board = new Chessboard("chessboard", config);
+		updateStatus();
+	}
+
+	//basic style
+	function gameStyle1(){
+      config.pieceTheme = 'img/chesspieces/wikipedia/{piece}.png'
+	init();
+}
+
+//halloween style
+function gameStyle2(){
+      config.pieceTheme = 'img/chesspieces/wiki2/{piece}.png'
+		init();
+    }
+//christmas style
+	function gameStyle3(){
+      config.pieceTheme = 'img/chesspieces/wiki3/{piece}.png'
+		init();
+    }
+
+	//flip the board if user wants to play light or dark
+	function gameStyle4(){
+		board.orientation('flip');
+		//config.pieceTheme = 'img/chesspieces/wiki4/{piece}.png'
+		//init();
+    }
+
+	//unicorn birthday style
+	function gameUnicorn(){
+		config.pieceTheme = 'img/chesspieces/wiki5/{piece}.png'
+		init();
+	}
+
+
+	//get username and output 
+	function getName(){
+		var userName = document.getElementById("name").value;
+		document.getElementById('result1').textContent = "Welcome user: @" + userName;
+	}
+	
+
+	function onDragStart (source, piece, position, orientation) {
+	  // do not pick up pieces if the game is over
+	  if (game.game_over()) return false;
+	
+	  // only pick up pieces for the side to move
+	  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+		  (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+		return false;
+	  }
+	}
+
+	//get morale and alleg thresholds
+	let moraleThresh = 0;
+	function getMorale(){
+		moraleThresh = document.getElementById("moraleT").value;
+
+	}
+
+	let allegThresh = 0;
+	function getAllegiance(){
+		allegThresh = document.getElementById("allegianceT").value;
+
+	}
+
+	//change if users can move pieces based on morale and alleg threshold
+	function onDrop (source, target) {
+		//randomized morale, compare to user input
+		var morale = Math.round(Math.random() * 100);
+		if (morale >= moraleThresh){
+	  // see if the move is legal
+	  var move = game.move({
+		from: source,
+		to: target,
+		promotion: 'q' // NOTE: always promote to a queen for example simplicity
+	  });
+	
+	  // illegal move
+	  if (move === null) return 'snapback';
+	}
+	else{
+		move == 0;
+	}
+
+	  updateStatus();
+	}
+	
+	
+	// update the board position after the piece snap
+	// for castling, en passant, pawn promotion
+	function onSnapEnd () {
+	  board.position(game.fen());
+	}
+
+	function playRand(){
+		onRandom();
+		$playRandomButton.on("click", $chessboard.hide());
+	}
+	
+	function replayButtonHandler () {
+		historyIndexPosition = 0
+		board.position(history[historyIndexPosition]);
+
+		// enable manual step by step replay
+		$replayButton.hide();
+		$nextButton.show("fast");
+		
+		// enable automatic step by step replay
+		// for (let i = 0; i < history.length; i++) {
+		// 	setTimeout(function() {board.position(history[i])},1000);
+		// }
+	}
+
+	function resetButtonHandler () {
+		// reset the board position
+		board.position(startPosition);
+		game = new Chess();
+		// clear the history array
+		history.splice(0,history.length);
+		// hide buttons
+		hideButtons();
+		updateGamesPlayed();
+	}
+
+	//reset the score if user clicks reset score button
+	function resetScoreHandler() {
+	document.getElementById("blackOut").innerHTML = "0";
+	blackWins = 0;
+	document.getElementById("whiteOut").innerHTML = "0";
+	whiteWins = 0;
+	document.getElementById("tiesOut").innerHTML = "0";
+	finalTies = 0;
+	}
+
+	//updates games played
+	var whiteWins = 0;
+	var blackWins = 0;
+	var finalTies=0;
+	var gamesPlayed = 0;
+	function updateGamesPlayed(){
+		gamesPlayed = gamesPlayed + 1;
+		document.getElementById('gamesPlayed').textContent = gamesPlayed;
+
+	}
+
+	function nextButtonHandler () {
+		historyIndexPosition++;
+		board.position(history[historyIndexPosition]); 
+
+		if (historyIndexPosition >= history.length - 1) { 
+			$nextButton.hide();
+			$replayButton.show("fast");
+		}
+	}
+
+
+	//hide buttons that user should not see until end of game, reveal once game is over
+	function hideButtons () {
+		$replayButton.hide();
+		$nextButton.hide();
+		$resetButton.hide();
+		$resetScoreButton.hide();
+	}
+
+	function showButtons () {
+		$replayButton.on('click', replayButtonHandler);
+		$nextButton.on('click', nextButtonHandler);
+		$resetButton.on('click', resetButtonHandler);
+		$resetScoreButton.on('click', resetScoreHandler);
+	
+
+		$replayButton.show("fast");
+		$resetButton.show("fast");
+		$resetScoreButton.show("fast");
+	}
+
+	function updateStatus () {
+	  var status = '';
+	  var moveColor = 'White';
+	
+	  if (game.turn() === 'b') {
+		moveColor = 'Black';
+	  }
+	
+	  // checkmate?
+	  if (game.in_checkmate()) {
+		status = 'Game over, ' + moveColor + ' is in checkmate.';
+		if (moveColor === 'White'){
+			blackWins += 1;
+			document.getElementById('blackOut').textContent = blackWins;
+		}
+		if (moveColor === 'Black'){
+			whiteWins +=1;
+			document.getElementById('whiteOut').textContent = whiteWins;
+		}
+		showButtons();
+	  }
+	
+	  // draw?
+	  else if (game.in_draw()) {
+		status = 'Game over, drawn position';
+		showButtons();
+		finalTies +=1;
+		document.getElementById('tiesOut').textContent = finalTies;
+	  }
+	
+	  // game still on
+	  else {
+		status = moveColor + ' to move';
+	
+		// check?
+		if (game.in_check()) {
+		  status += ', ' + moveColor + ' is in check';
+		}
+	  }
+
+	
+	  
+
+	  // display the current status 
+	  $status.html(status);
+	  // display the game board as string
+	  $fen.html(game.fen());
+	  // story the FEN board into our history
+	  if (status != "") { 
+		history.push(game.fen());
+		console.log(history);
+	  }
+	  // display the game history
+	  $pgn.html(game.pgn());
+
+	}
+	
+	var config = {
+	  draggable: true,
+	  moveSpeed: 'slow',
+	  position: 'start',
+	  onDragStart: onDragStart,
+	  onDrop: onDrop,
+	  onSnapEnd: onSnapEnd
+	};
+	
+	var init = function() {
+		board = new Chessboard("chessBoard", config);
+		updateStatus();
+	
+	}; // end init()
+	$(document).ready(init);
+
+
+
+
+//random player 
+function onRandom(){
+var board = null
+var game = new Chess()
+
+function onDragStart (source, piece, position, orientation) {
+  // do not pick up pieces if the game is over
+  if (game.game_over()) return false
+
+  // only pick up pieces for White
+  if (piece.search(/^b/) !== -1) return false
+}
+
+function makeRandomMove () {
+  var possibleMoves = game.moves()
+
+  // game over
+  if (possibleMoves.length === 0) return
+
+  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  game.move(possibleMoves[randomIdx])
+  board.position(game.fen())
+}
+
+function onDrop (source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  })
+
+  // illegal move
+  if (move === null) return 'snapback'
+
+  // make random legal move for black
+  window.setTimeout(makeRandomMove, 250)
+}
+
+// update the board position after the piece snap
+// for castling, en passant, pawn promotion
+function onSnapEnd () {
+  board.position(game.fen())
+}
+
+var config = {
+  draggable: true,
+  position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd
+}
+board = Chessboard('randBoard', config)
+
+}
+
+	// --- End Example JS ----------------------------------------------------------
+	</script>
+
+<!--semantic element footer, html and css validator passed site-->
+<footer>
+	<br><br>
+	<a href="http://validator.w3.org/check/referer">
+	<img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML">
+  </a>
+  <a href="http://jigsaw.w3.org/css-validator/check/referer">
+  <img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS">
+  </a>
+</footer>
+</body>
+</html>

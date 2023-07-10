@@ -1,0 +1,268 @@
+/*! chessboard.js v1.0.0 | (c) 2019 Chris Oakman | MIT License chessboardjs.com/license */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.clearfix-7da63{
+    clear:both
+}
+
+.board-b72b1{
+    border:2px solid #404040;
+    box-sizing:content-box
+}
+
+.square-55d63{
+    float:left;
+    position:relative;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+
+.white-1e1d7{
+    background-color:#f0b5e9;
+    color:#907e6f
+}
+
+.black-3c85d{
+    background-color:#b7aaa0;color:#f0b5dc
+}
+
+.highlight1-32417,.highlight2-9c5d2{
+    box-shadow:inset 0 0 3px 3px #ff0
+}
+
+.notation-322f9{
+    cursor:default;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:14px;
+    position:absolute
+}
+
+.alpha-d2270{
+    bottom:1px;
+    right:3px
+}
+
+.numeric-fc462{
+    top:2px;
+    left:2px
+}
+
+/*set font*/
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/*set backgrounds for styles*/
+#style2 {
+    background-color: lightsalmon;
+    color: black;
+}
+
+#unicornStyle{
+  background-color: darkmagenta;
+    color: black;
+}
+
+#style3{
+    background-color: seagreen;
+    color: white;
+}
+
+button{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: bisque;
+  }
+  
+
+  /*css for lights used from codepen https://codepen.io/tobyj/pen/QjvEex */
+  .lightrope {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    margin: -15px 0 0 0;
+    padding: 0;
+    pointer-events: none;
+    width: 100%;
+  }
+  .lightrope li {
+    position: relative;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 12px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 20px;
+    display: inline-block;
+    background: #00f7a5;
+    box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
+    -webkit-animation-name: flash-1;
+            animation-name: flash-1;
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+  }
+  .lightrope li:nth-child(2n+1) {
+    background: aqua;
+    box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.5);
+    -webkit-animation-name: flash-2;
+            animation-name: flash-2;
+    -webkit-animation-duration: 0.4s;
+            animation-duration: 0.4s;
+  }
+  .lightrope li:nth-child(4n+2) {
+    background: #f70094;
+    box-shadow: 0px 4.6666666667px 24px 3px #f70094;
+    -webkit-animation-name: flash-3;
+            animation-name: flash-3;
+    -webkit-animation-duration: 1.1s;
+            animation-duration: 1.1s;
+  }
+  .lightrope li:nth-child(odd) {
+    -webkit-animation-duration: 1.8s;
+            animation-duration: 1.8s;
+  }
+  .lightrope li:nth-child(3n+1) {
+    -webkit-animation-duration: 1.4s;
+            animation-duration: 1.4s;
+  }
+  .lightrope li:before {
+    content: "";
+    position: absolute;
+    background: #222;
+    width: 10px;
+    height: 9.3333333333px;
+    border-radius: 3px;
+    top: -4.6666666667px;
+    left: 1px;
+  }
+  .lightrope li:after {
+    content: "";
+    top: -14px;
+    left: 9px;
+    position: absolute;
+    width: 52px;
+    height: 18.6666666667px;
+    border-bottom: solid #222 2px;
+    border-radius: 50%;
+  }
+  .lightrope li:last-child:after {
+    content: none;
+  }
+  .lightrope li:first-child {
+    margin-left: -40px;
+  }
+  
+  @-webkit-keyframes flash-1 {
+    0%, 100% {
+      background: #00f7a5;
+      box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
+    }
+    50% {
+      background: rgba(0, 247, 165, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 247, 165, 0.2);
+    }
+  }
+  
+  @keyframes flash-1 {
+    0%, 100% {
+      background: #00f7a5;
+      box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
+    }
+    50% {
+      background: rgba(0, 247, 165, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 247, 165, 0.2);
+    }
+  }
+  @-webkit-keyframes flash-2 {
+    0%, 100% {
+      background: aqua;
+      box-shadow: 0px 4.6666666667px 24px 3px aqua;
+    }
+    50% {
+      background: rgba(0, 255, 255, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.2);
+    }
+  }
+  @keyframes flash-2 {
+    0%, 100% {
+      background: aqua;
+      box-shadow: 0px 4.6666666667px 24px 3px aqua;
+    }
+    50% {
+      background: rgba(0, 255, 255, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.2);
+    }
+  }
+  @-webkit-keyframes flash-3 {
+    0%, 100% {
+      background: #f70094;
+      box-shadow: 0px 4.6666666667px 24px 3px #f70094;
+    }
+    50% {
+      background: rgba(247, 0, 148, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(247, 0, 148, 0.2);
+    }
+  }
+  @keyframes flash-3 {
+    0%, 100% {
+      background: #f70094;
+      box-shadow: 0px 4.6666666667px 24px 3px #f70094;
+    }
+    50% {
+      background: rgba(247, 0, 148, 0.4);
+      box-shadow: 0px 4.6666666667px 24px 3px rgba(247, 0, 148, 0.2);
+    }
+  }
+
+
+/* use box model to space out sections*/
+#result1{
+  font-size: 20px;
+}
+
+#randBoard {
+  width: 400px;
+}
+
+#chessBoard {
+  width: 400px;
+  float: left;
+}
+
+.buttons{ 
+  float: right;
+  margin-right: 300px; 
+  margin-top: 50px;
+  background-color: pink;
+  padding: 10px;
+}
+
+.labels{
+  margin-top: 400px;
+  background-color: pink;
+}
+
+
+ 
+  
+  
